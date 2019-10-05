@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 smoothedVelocity;
     private Vector2 currentLookingPos;
-    private bool isCrouched = false;
+    //private bool isCrouched = false;
 
     private void Start()
     {
@@ -18,13 +18,16 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // PLAYER MOVEMENT
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
-        transform.Translate(x, 0, z);
+        GetComponent<Rigidbody>().MovePosition(transform.position + (transform.forward * z) + (transform.right * x));
+    }
 
+    private void Update()
+    {
         // PLAYER ROTATION
         Vector2 inputValues = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
@@ -39,13 +42,13 @@ public class PlayerController : MonoBehaviour
         transform.localRotation = Quaternion.AngleAxis(currentLookingPos.x, Vector3.up);
 
         // CROUCH
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        /*if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             if (!isCrouched)
                 transform.GetChild(0).transform.localPosition = new Vector3(0, 0, 0);
             else
                 transform.GetChild(0).transform.localPosition = new Vector3(0, 1.6f, 0);
             isCrouched = !isCrouched;
-        }
+        }*/
     }
 }

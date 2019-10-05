@@ -29,9 +29,8 @@ public class FootMarker : MonoBehaviour
             if (Physics.Raycast(footPosition.transform.position, -footPosition.transform.up, out hit, groundCheck))
             {
                 leftFoot = -leftFoot;
-                GameObject newDecal = Instantiate(footMarker, hit.point, Quaternion.LookRotation(Vector3.up, hit.normal));
-                newDecal.transform.position -= newDecal.transform.forward * 0.1f;
-                newDecal.transform.position += newDecal.transform.right * footPrintShift * leftFoot;
+                GameObject newDecal = Instantiate(footMarker, new Vector3(hit.point.x, hit.point.y - 0.1f, hit.point.z), Quaternion.LookRotation(Vector3.up, hit.normal));
+                newDecal.transform.Translate(transform.up * footPrintShift * leftFoot);
                 lastPos = transform.position;
             }
         }
