@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
     public void loadLevel(int TargetScene)
     {
     	SceneManager.LoadScene(TargetScene);
