@@ -14,7 +14,8 @@ public class HandMarker : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && Physics.Raycast(transform.GetChild(0).GetChild(1).position, transform.GetChild(0).GetChild(1).forward, out hit, 10))
         {
-            Instantiate(handMark, hit.point, Quaternion.LookRotation(Vector3.forward, hit.normal));
+            GameObject newDecal = Instantiate(handMark, hit.point, Quaternion.LookRotation(Vector3.up, hit.normal));
+            newDecal.transform.position -= newDecal.transform.forward * 0.1f;
         }
     }
 }

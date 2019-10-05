@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-    public float jumpForce;
-    public float groundCheck;
     public float lookSensitivity;
     public float smoothing;
 
@@ -40,13 +38,6 @@ public class PlayerController : MonoBehaviour
         transform.GetChild(0).transform.localRotation = Quaternion.AngleAxis(-currentLookingPos.y, Vector3.right);
         transform.localRotation = Quaternion.AngleAxis(currentLookingPos.x, Vector3.up);
 
-        // JUMP
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (IsGrounded())
-                GetComponent<Rigidbody>().AddForce(0, jumpForce, 0, ForceMode.Impulse);
-        }
-
         // CROUCH
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
@@ -56,11 +47,5 @@ public class PlayerController : MonoBehaviour
                 transform.GetChild(0).transform.localPosition = new Vector3(0, 1.6f, 0);
             isCrouched = !isCrouched;
         }
-    }
-
-    private bool IsGrounded()
-    {
-        return (Physics.Raycast(transform.position, Vector3.down, groundCheck));
-        
     }
 }
