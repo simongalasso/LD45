@@ -13,9 +13,9 @@ public class Spikes : MonoBehaviour
       {
           check = true;
           yield return new WaitForSeconds(time);
-          transform.position = transform.position + new Vector3(10, 0, 0);
+          transform.position = transform.position + transform.up * -10;
           yield return new WaitForSeconds(time);
-          transform.position = transform.position + new Vector3(-10, 0, 0);
+          transform.position = transform.position + transform.up * 10;
           check = false;
       }
 
