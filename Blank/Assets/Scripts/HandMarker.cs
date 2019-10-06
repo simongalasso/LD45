@@ -5,17 +5,18 @@ using UnityEngine;
 public class HandMarker : MonoBehaviour
 {
     public GameObject handMark;
+    public float touchDistance;
 
     private void Update()
     {
         RaycastHit hit;
 
-        Debug.DrawRay(transform.GetChild(0).GetChild(1).position, transform.GetChild(0).GetChild(1).forward * 10, Color.red);
+        //Debug.DrawRay(transform.GetChild(0).GetChild(1).position, transform.GetChild(0).GetChild(1).forward * touchDistance, Color.red);
 
-        if (Input.GetMouseButtonDown(0) && Physics.Raycast(transform.GetChild(0).GetChild(1).position, transform.GetChild(0).GetChild(1).forward, out hit, 10))
+        if (Input.GetMouseButtonDown(0) && Physics.Raycast(transform.GetChild(0).GetChild(1).position, transform.GetChild(0).GetChild(1).forward, out hit, touchDistance))
         {
-            GameObject newDecal = Instantiate(handMark, hit.point, Quaternion.LookRotation(Vector3.up, hit.normal));
-            newDecal.transform.position -= newDecal.transform.forward * 0.1f;
+            GameObject newDecal = Instantiate(handMark, hit.point, transform.GetChild(0).rotation);
+            newDecal.transform.position += newDecal.transform.TransformDirection(-Vector3.forward) * 0.5f;
         }
     }
 }

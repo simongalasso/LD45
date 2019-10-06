@@ -27,7 +27,7 @@ public class FootMarker : MonoBehaviour
     {
         RaycastHit hit;
 
-        Debug.DrawRay(footPosition.transform.position, -footPosition.transform.up * groundCheck, Color.red);
+        //Debug.DrawRay(footPosition.transform.position, -footPosition.transform.up * groundCheck, Color.red);
 
         if (Vector3.Distance(transform.position, lastPos) > distanceBetweenFootPrint)                                                                                                                                                                                                                                                                                                                                                                                 
         {
