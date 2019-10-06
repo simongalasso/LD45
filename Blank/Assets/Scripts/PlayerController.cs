@@ -11,7 +11,10 @@ public class PlayerController : MonoBehaviour
     public float ladderCheckDist;
     public LayerMask ladderMask;
     public float climbSpeed;
+    public float delayBetweenclimbSounds;
 
+    private float lastTime;
+    private AudioSource[] ladderSounds;
     private Rigidbody rb;
     private Vector2 smoothedVelocity;
     private Vector2 currentLookingPos;
@@ -21,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        lastTime = Time.time;
+        ladderSounds = GetComponents<AudioSource>();
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -36,6 +41,12 @@ public class PlayerController : MonoBehaviour
         //Debug.DrawRay(ladderCheckPos.transform.position, ladderCheckPos.transform.forward * ladderCheckDist, Color.red);
         if (y > 0 && Physics.Raycast(ladderCheckPos.transform.position, ladderCheckPos.transform.forward, ladderCheckDist, ladderMask))
         {
+            if (Time.time - lastTime > delayBetweenclimbSounds)
+            {
+                int soundIdx = Random.Range(4, 6);
+                ladderSounds[soundIdx].PlayOneShot(ladderSounds[soundIdx].clip);
+                lastTime = Time.time;
+            }
             rb.useGravity = false;
             z = y;
         }
