@@ -7,23 +7,46 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float lookSensitivity;
     public float smoothing;
+    public GameObject ladderCheckPos;
+    public float ladderCheckDist;
+    public LayerMask ladderMask;
+    public float climbSpeed;
 
+    private Rigidbody rb;
     private Vector2 smoothedVelocity;
     private Vector2 currentLookingPos;
-    //private bool isCrouched = false;
+    private float x = 0;
+    private float y = 0;
+    private float z = 0;
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     private void FixedUpdate()
     {
-        // PLAYER MOVEMENT
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
-        GetComponent<Rigidbody>().MovePosition(transform.position + (transform.forward * z) + (transform.right * x));
+        // CALC PLAYER MOVEMENT
+        x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        y = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+
+        // CALC CLIMB LADDERS
+        //Debug.DrawRay(ladderCheckPos.transform.position, ladderCheckPos.transform.forward * ladderCheckDist, Color.red);
+        if (y > 0 && Physics.Raycast(ladderCheckPos.transform.position, ladderCheckPos.transform.forward, ladderCheckDist, ladderMask))
+        {
+            rb.useGravity = false;
+            z = y;
+        }
+        else if (rb.useGravity == false)
+        {
+            rb.useGravity = true;
+            z = 0;
+        }
+
+        // APPLY MOVEMENTS
+        rb.MovePosition(transform.position + (transform.right * x) + (transform.forward * y) + (transform.up * z));
     }
 
     private void Update()
@@ -40,15 +63,5 @@ public class PlayerController : MonoBehaviour
 
         transform.GetChild(0).transform.localRotation = Quaternion.AngleAxis(-currentLookingPos.y, Vector3.right);
         transform.localRotation = Quaternion.AngleAxis(currentLookingPos.x, Vector3.up);
-
-        // CROUCH
-        /*if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            if (!isCrouched)
-                transform.GetChild(0).transform.localPosition = new Vector3(0, 0, 0);
-            else
-                transform.GetChild(0).transform.localPosition = new Vector3(0, 1.6f, 0);
-            isCrouched = !isCrouched;
-        }*/
     }
 }

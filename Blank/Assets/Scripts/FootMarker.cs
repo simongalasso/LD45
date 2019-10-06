@@ -12,14 +12,14 @@ public class FootMarker : MonoBehaviour
     public float footPrintShift;
     
     private GameObject footMarker;
-    private AudioSource footSound;
+    private AudioSource[] footSounds;
     private Vector3 lastPos;
     private int leftFoot = 1;
 
     private void Start()
     {
         footMarker = footLMarker;
-        footSound = GetComponent<AudioSource>();
+        footSounds = GetComponents<AudioSource>();
         lastPos = transform.position;
     }
 
@@ -33,7 +33,8 @@ public class FootMarker : MonoBehaviour
         {
             if (Physics.Raycast(footPosition.transform.position, -footPosition.transform.up, out hit, groundCheck))
             {
-                footSound.PlayOneShot(footSound.clip);
+                int soundIdx = Random.Range(0, footSounds.Length);
+                footSounds[soundIdx].PlayOneShot(footSounds[soundIdx].clip);
                 if (leftFoot == 1)
                     footMarker = footLMarker;
                 else
