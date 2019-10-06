@@ -39,7 +39,7 @@ public class FootMarker : MonoBehaviour
                 else
                     footMarker = footRMarker;
                 leftFoot = -leftFoot;
-                GameObject newDecal = Instantiate(footMarker, new Vector3(hit.point.x, hit.point.y + 0.1f, hit.point.z), Quaternion.LookRotation(-Vector3.up, hit.normal));
+                GameObject newDecal = Instantiate(footMarker, new Vector3(hit.point.x, footPosition.transform.position.y + 0.1f, hit.point.z), Quaternion.LookRotation(-Vector3.up, hit.normal));
                 newDecal.transform.eulerAngles = new Vector3(newDecal.transform.eulerAngles.x, transform.eulerAngles.y, newDecal.transform.eulerAngles.z);
                 newDecal.transform.position += transform.TransformDirection(Vector3.right * leftFoot) * footPrintShift;
                 lastPos = transform.position;
