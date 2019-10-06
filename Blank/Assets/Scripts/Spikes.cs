@@ -11,14 +11,12 @@ public class Spikes : MonoBehaviour
 
       public IEnumerator spikepop()
       {
-          check = true;
           yield return new WaitForSeconds(time);
           transform.position = transform.position + transform.up * -10;
           yield return new WaitForSeconds(time);
           transform.position = transform.position + transform.up * 10;
           check = false;
       }
-
 
       void Update()
       {
@@ -33,8 +31,9 @@ public class Spikes : MonoBehaviour
       {
            if(collision.gameObject == Player)
            {
-                // Red screen, delay d'une seconde
-                Player.transform.position = Respawn.transform.position;
+             //Red screen
+             //Delay
+             Player.transform.position = Respawn.transform.position;
            }
       }
 }

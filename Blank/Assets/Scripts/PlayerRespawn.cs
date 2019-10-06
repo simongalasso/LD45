@@ -12,8 +12,9 @@ public class PlayerRespawn : MonoBehaviour
     {
          if(collision.gameObject == Player)
          {
-              // Red screen, delay d'une seconde
-              Player.transform.position = Respawn.transform.position;
+           //Red screen
+           //Delay
+           Player.transform.position = Respawn.transform.position;
          }
     }
 }
