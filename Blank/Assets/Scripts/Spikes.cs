@@ -5,7 +5,6 @@ using UnityEngine;
 public class Spikes : MonoBehaviour
 {
       public GameObject Player;
-      public GameObject Respawn;
       public float time = 3;
       private bool check = false;
 
@@ -29,11 +28,11 @@ public class Spikes : MonoBehaviour
 
       void OnTriggerEnter(Collider collision)
       {
-           if(collision.gameObject == Player)
-           {
-             //Red screen
-             //Delay
-             Player.transform.position = Respawn.transform.position;
-           }
+          GameObject go = GameObject.Find("Respawn");
+          respawn other = (respawn) go.GetComponent(typeof(respawn));
+          if(collision.gameObject == Player)
+          {
+              other.respawnplayer();
+          }
       }
 }
