@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1755472927294802148}
   - component: {fileID: 1755472927294802149}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FootLMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}

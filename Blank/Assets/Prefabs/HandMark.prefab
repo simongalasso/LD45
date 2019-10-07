@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5044499437628941843}
   - component: {fileID: 5044499437628941852}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HandMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,40 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    private void Pause()
-    {
-        Time.timeScale = 0;
-    }
-    private void UnPause()
-    {
-        Time.timeScale = 1;
-    }
-    public void Resume()
-    {
-        UnPause();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        transform.GetChild(0).gameObject.SetActive(false);
-    }
+    public GameObject crosshair;
+
+    private bool gamePaused = false;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(/*KeyCode.Escape*/KeyCode.Q))
         {
-            if (Time.timeScale == 1)
-            {
+            if (!gamePaused)
                 Pause();
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                transform.GetChild(0).gameObject.SetActive(true);
-            }
             else
-            {
                 Resume();
-            }
+            gamePaused = !gamePaused;
         }
+    }
+
+    private void Pause()
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
+        crosshair.SetActive(false);
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+    public void Resume()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        crosshair.SetActive(true);
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+    public void BackToMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 }
