@@ -19,10 +19,10 @@ Material:
   - DBufferMesh_M
   - DBufferMesh_AO
   - DBufferMesh_MAO
-  - Mesh_Emissive
+  - DBufferMesh_MAOS
   - DBufferMesh_MS
   - DBufferMesh_AOS
-  - DBufferMesh_MAOS
+  - Mesh_Emissive
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -123,14 +123,14 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _UseEmissiveIntensity: 0
+    - _UseEmissiveIntensity: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissiveColor: {r: 1, g: 0.8726415, b: 0.8726415, a: 1}
     - _EmissiveColorHDR: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissiveColorLDR: {r: 1, g: 0.8726415, b: 0.8726415, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
