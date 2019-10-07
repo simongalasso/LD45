@@ -2526,6 +2526,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2818884014843768441, guid: 03c764a184865db479dea178018b11cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2818884014843768445, guid: 03c764a184865db479dea178018b11cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2636,6 +2641,11 @@ PrefabInstance:
       propertyPath: crosshair
       value: 
       objectReference: {fileID: 1755623501}
+    - target: {fileID: 2818884016419995364, guid: 03c764a184865db479dea178018b11cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03c764a184865db479dea178018b11cc, type: 3}
 --- !u!1001 &1665657365932591251
