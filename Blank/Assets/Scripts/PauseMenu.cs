@@ -8,14 +8,15 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject crosshair;
     public bool gamePaused = false;
+    public bool victory = false;
 
     private void Update()
     {
         if (Input.GetKeyDown(/*KeyCode.Escape*/KeyCode.Q))
         {
-            if (!gamePaused)
+            if (!gamePaused && !victory)
                 Pause();
-            else
+            else if (!victory)
                 Resume();
         }
     }
@@ -32,6 +33,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Victory()
     {
+        victory = true;
         gamePaused = true;
         transform.GetChild(1).gameObject.SetActive(true);
         crosshair.SetActive(false);
