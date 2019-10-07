@@ -10,6 +10,12 @@ public class Spikes : MonoBehaviour
     public float time = 3;
 
     private bool check = false;
+    private AudioSource spikeSound;
+
+    private void Start()
+    {
+        spikeSound = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -34,7 +40,7 @@ public class Spikes : MonoBehaviour
         if (collision.gameObject == Player)
         {
             //Red screen
-            //Delay
+            spikeSound.PlayOneShot(spikeSound.clip);
             Player.transform.position = Respawn.transform.position;
         }
     }
