@@ -12,9 +12,7 @@ public class ColorSwitcher : MonoBehaviour
     public void ChangeColor()
     {
         if (state == false)
-            GetComponent<Renderer>().material = materialOn;
-        else
-            GetComponent<Renderer>().material = materialOff;
+            transform.GetChild(0).GetComponent<Renderer>().material = materialOn;
         state = !state;
     }
 }

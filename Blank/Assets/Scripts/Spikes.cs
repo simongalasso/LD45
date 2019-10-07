@@ -11,9 +11,11 @@ public class Spikes : MonoBehaviour
 
     private bool check = false;
     private AudioSource spikeSound;
+    private ColorSwitcher colorSwitcher;
 
     private void Start()
     {
+        colorSwitcher = GetComponent<ColorSwitcher>();
         spikeSound = GetComponent<AudioSource>();
     }
 
@@ -40,6 +42,7 @@ public class Spikes : MonoBehaviour
         if (collision.gameObject == Player)
         {
             //Red screen
+            colorSwitcher.ChangeColor();
             spikeSound.PlayOneShot(spikeSound.clip);
             Player.transform.position = Respawn.transform.position;
         }
