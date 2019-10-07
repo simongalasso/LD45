@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public PauseMenu pauseMenu;
     public float speed;
     public float lookSensitivity;
     public float smoothing;
@@ -52,16 +53,19 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // PLAYER ROTATION
-        Vector2 inputValues = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        if (!pauseMenu.gamePaused)
+        {
+            Vector2 inputValues = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
-        inputValues = Vector2.Scale(inputValues, new Vector2(lookSensitivity * smoothing, lookSensitivity * smoothing));
+            inputValues = Vector2.Scale(inputValues, new Vector2(lookSensitivity * smoothing, lookSensitivity * smoothing));
 
-        smoothedVelocity.x = Mathf.Lerp(smoothedVelocity.x, inputValues.x, 1f / smoothing);
-        smoothedVelocity.y = Mathf.Lerp(smoothedVelocity.y, inputValues.y, 1f / smoothing);
+            smoothedVelocity.x = Mathf.Lerp(smoothedVelocity.x, inputValues.x, 1f / smoothing);
+            smoothedVelocity.y = Mathf.Lerp(smoothedVelocity.y, inputValues.y, 1f / smoothing);
 
-        currentLookingPos += smoothedVelocity;
+            currentLookingPos += smoothedVelocity;
 
-        transform.GetChild(0).transform.localRotation = Quaternion.AngleAxis(-currentLookingPos.y, Vector3.right);
-        transform.localRotation = Quaternion.AngleAxis(currentLookingPos.x, Vector3.up);
+            transform.GetChild(0).transform.localRotation = Quaternion.AngleAxis(-currentLookingPos.y, Vector3.right);
+            transform.localRotation = Quaternion.AngleAxis(currentLookingPos.x, Vector3.up);
+        }
     }
 }

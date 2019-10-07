@@ -7,8 +7,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject crosshair;
-
-    private bool gamePaused = false;
+    public bool gamePaused = false;
 
     private void Update()
     {
@@ -18,12 +17,12 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             else
                 Resume();
-            gamePaused = !gamePaused;
         }
     }
 
     private void Pause()
     {
+        gamePaused = true;
         transform.GetChild(0).gameObject.SetActive(true);
         crosshair.SetActive(false);
         Time.timeScale = 0;
@@ -32,6 +31,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void Resume()
     {
+        gamePaused = false;
         transform.GetChild(0).gameObject.SetActive(false);
         crosshair.SetActive(true);
         Time.timeScale = 1;
