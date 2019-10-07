@@ -254,7 +254,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   handMark: {fileID: 5044499437628941853, guid: aade125f39545bc4b9aff1a54f7bbd35,
     type: 3}
-  touchDistance: 2
+  touchDistance: 3
 --- !u!114 &1671308667600035877
 MonoBehaviour:
   m_ObjectHideFlags: 0
