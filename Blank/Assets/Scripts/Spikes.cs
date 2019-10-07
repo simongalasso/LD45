@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spikes : MonoBehaviour
 {
+    public GameObject hudCanvas;
     public GameObject Player;
     public GameObject Respawn;
     public bool isAnimated = false;
     public float time = 3;
+    public float colorSpeed;
 
     private bool check = false;
     private AudioSource spikeSound;
     private ColorSwitcher colorSwitcher;
+    private Color colorTmp;
 
     private void Start()
     {
@@ -25,6 +29,12 @@ public class Spikes : MonoBehaviour
         {
             check = true;
             StartCoroutine(spikepop());
+        }
+
+        if (colorTmp.a > 0)
+        {
+            colorTmp.a -= 0.01f * Time.deltaTime * colorSpeed;
+            hudCanvas.transform.GetChild(2).GetComponent<Image>().color = colorTmp;
         }
     }
 
@@ -41,7 +51,9 @@ public class Spikes : MonoBehaviour
     {
         if (collision.gameObject == Player)
         {
-            //Red screen
+            colorTmp = hudCanvas.transform.GetChild(2).GetComponent<Image>().color;
+            colorTmp.a = 1f;
+            hudCanvas.transform.GetChild(2).GetComponent<Image>().color = colorTmp;
             colorSwitcher.ChangeColor();
             spikeSound.PlayOneShot(spikeSound.clip);
             Player.transform.position = Respawn.transform.position;
