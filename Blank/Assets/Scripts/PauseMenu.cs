@@ -41,6 +41,17 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = true;
     }
 
+    public void End()
+    {
+        victory = true;
+        gamePaused = true;
+        crosshair.transform.GetChild(3).gameObject.SetActive(true);
+        crosshair.transform.GetChild(0).gameObject.SetActive(false);
+        crosshair.transform.GetChild(1).gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     public void Next()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

@@ -9,6 +9,7 @@ public class endlevel : MonoBehaviour
     public CameraController cameraController;
     public GameObject Player;
     public float range = 10f;
+    public bool end = false;
 
     private AudioSource victorySound;
 
@@ -23,7 +24,10 @@ public class endlevel : MonoBehaviour
          {
             victorySound.PlayOneShot(victorySound.clip);
             cameraController.ChangeCameraPosition();
-            pauseMenu.Victory();
+            if (end == true)
+                pauseMenu.End();
+            else
+                pauseMenu.Victory();
          }
     }
 }
