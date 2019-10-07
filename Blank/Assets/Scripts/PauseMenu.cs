@@ -32,6 +32,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Victory()
     {
+        gamePaused = true;
         transform.GetChild(1).gameObject.SetActive(true);
         crosshair.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
