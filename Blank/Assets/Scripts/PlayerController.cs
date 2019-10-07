@@ -47,7 +47,8 @@ public class PlayerController : MonoBehaviour
         }
 
         // APPLY MOVEMENTS
-        rb.MovePosition(transform.position + (transform.right * x) + (transform.forward * y) + (transform.up * z));
+        if (!pauseMenu.gamePaused)
+            rb.MovePosition(transform.position + (transform.right * x) + (transform.forward * y) + (transform.up * z));
     }
 
     private void Update()

@@ -694,6 +694,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1665657365932591251}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &820579248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 820579252}
+  m_Layer: 0
+  m_Name: EndCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &820579252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820579248}
+  m_LocalRotation: {x: 0.40395617, y: 0.32753164, z: -0.15760939, w: 0.8394652}
+  m_LocalPosition: {x: -6.4770784, y: 10.229465, z: -22.511183}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &942838875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,6 +1360,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e617932bd7a43d4f83cd45a5f43f764, type: 3}
+--- !u!1 &1454795757 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1671308668081075452, guid: 1989b7393ca379a4494bcc0e93d35a91,
+    type: 3}
+  m_PrefabInstance: {fileID: 2010178448}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1454795758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454795757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bce9bb17eef1754fa56e170a94803f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 1935315275}
+  endCameraPos: {fileID: 820579252}
+  speed: 5
 --- !u!1 &1569812868
 GameObject:
   m_ObjectHideFlags: 0
@@ -2575,6 +2626,16 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1667553259}
+    - target: {fileID: 1665657366560487452, guid: 1eba7ae6ffd292d48b3a4e14e9249081,
+        type: 3}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 1454795758}
+    - target: {fileID: 1665657366560487452, guid: 1eba7ae6ffd292d48b3a4e14e9249081,
+        type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1935315275}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eba7ae6ffd292d48b3a4e14e9249081, type: 3}
 --- !u!1001 &7057729967967452166

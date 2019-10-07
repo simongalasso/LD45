@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class endlevel : MonoBehaviour
 {
+    public PauseMenu pauseMenu;
+    public CameraController cameraController;
     public GameObject Player;
     public float range = 10f;
 
@@ -12,7 +14,8 @@ public class endlevel : MonoBehaviour
     {
          if (collision.gameObject == Player)
          {
-              SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            cameraController.ChangeCameraPosition();
+            pauseMenu.Victory();
          }
     }
 }

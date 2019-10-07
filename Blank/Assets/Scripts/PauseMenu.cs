@@ -29,6 +29,20 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
+    public void Victory()
+    {
+        transform.GetChild(1).gameObject.SetActive(true);
+        crosshair.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void Next()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void Resume()
     {
         gamePaused = false;
@@ -38,6 +52,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
     public void BackToMenu()
     {
         Time.timeScale = 1;
