@@ -33,7 +33,7 @@ public class FootMarker : MonoBehaviour
         {
             if (Physics.Raycast(footPosition.transform.position, -footPosition.transform.up, out hit, groundCheck))
             {
-                int soundIdx = Random.Range(0, 4);
+                int soundIdx = Random.Range(0, footSounds.Length);
                 footSounds[soundIdx].PlayOneShot(footSounds[soundIdx].clip);
                 if (leftFoot == 1)
                     footMarker = footLMarker;
